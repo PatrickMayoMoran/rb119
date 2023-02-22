@@ -23,6 +23,7 @@ customer_orders = [
 # is converted to a total order value instead
 # of an array of individual orders
 
+# Original solution - trying to do too much at once
 all_orders = customer_orders.map do |hash|
               hash.map do |k,v|
                 if k == :orders
@@ -39,5 +40,24 @@ all_orders = customer_orders.map do |hash|
 all_orders = all_orders.map do |sub|
               sub.to_h
             end
+
+p all_orders
+
+# Given solution from memory - first map a new hash with the information that
+# is staying the same
+# THEN do the reduction and add this to created hashes
+all_orders = customer_orders.map do |customer|
+  {
+    customer_id: customer[:customer_id],
+    customer_name: customer[:customer_name]
+  }
+end
+
+customer_orders.each_with_index do |customer, index|
+  order_value = customer[:orders].reduce(0) do |memo, order|
+    memo + order[:order_value]
+  end
+  all_orders[index][:total_order_value] = order_value
+end
 
 p all_orders
