@@ -34,12 +34,33 @@
 # CODE
 def pairs(arr)
   pairs = []
+  arr.each_with_index do |num, index|
+    ending = arr.size - 1
+    starting = index + 1
+    if starting < arr.size
+      for number in (starting..ending)
+        pair = [num, arr[starting]]
+        pairs << pair
+        starting += 1
+      end
+    end
+  end
+
+  pairs
 end
 
 def closest_numbers(arr)
   pairs = pairs(arr)
+  smallest = pairs.first
+  pairs.each do |pair|
+    current_diff = (pair[0] - pair[1]).abs
+    smallest_diff = (smallest[0] - smallest[1]).abs
+    smallest = pair if current_diff < smallest_diff
+  end
+
+  smallest
 end
 
-p closest_numbers([5, 25, 15, 11, 20]) #== [15, 11]
-# p closest_numbers([19, 25, 32, 4, 27, 16]) == [25, 27]
-# p closest_numbers([12, 7, 17]) == [12, 7]
+p closest_numbers([5, 25, 15, 11, 20]) == [15, 11]
+p closest_numbers([19, 25, 32, 4, 27, 16]) == [25, 27]
+p closest_numbers([12, 7, 17]) == [12, 7]
