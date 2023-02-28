@@ -35,13 +35,13 @@
 def pairs(arr)
   pairs = []
   arr.each_with_index do |num, index|
-    ending = arr.size - 1
-    starting = index + 1
-    if starting < arr.size
-      for number in (starting..ending)
-        pair = [num, arr[starting]]
+    last_buddy = arr.size - 1
+    buddy_index = index + 1
+    if buddy_index < arr.size
+      for number in (buddy_index..last_buddy)
+        pair = [num, arr[buddy_index]]
         pairs << pair
-        starting += 1
+        buddy_index += 1
       end
     end
   end
