@@ -69,14 +69,24 @@
 #
 # return new arrary
 
-def rotate_array(array)
-  rotated = []
-  array.each_with_index do |el, i|
-    rotated << el if i == 0
-    rotated.insert(rotated.size-1, el) unless i == 0
-  end
+# def rotate_array(array)
+#   rotated = []
+#   array.each_with_index do |el, i|
+#     rotated << el if i == 0
+#     rotated.insert(rotated.size-1, el) unless i == 0
+#   end
+# 
+#   rotated
+# end
 
-  rotated
+# below is given solution; does NOT work for empty array
+# otherwise, works because ofthe "if range start is array size, returns
+# empty array" special case. If array was only 1 element, first slice would
+# be empty array and second slice would be array of that element, adding
+# together makes new array of just the one element
+def rotate_array(array)
+  return [] if array.empty? # added line to address empty array
+  array[1..-1] + [array[0]]
 end
 
 p rotate_array([7, 3, 5, 2, 9, 1]) == [3, 5, 2, 9, 1, 7]
