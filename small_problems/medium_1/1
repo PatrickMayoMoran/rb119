@@ -1,0 +1,11 @@
+def diamonds(num)
+  diamond = '*'
+  1.upto(num) do |i|
+    next if i.even?
+    puts (diamond * i).center(num)
+  end
+end
+
+diamonds(1)
+diamonds(3)
+diamonds(9)
