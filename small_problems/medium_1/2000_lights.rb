@@ -43,18 +43,28 @@ def flip_switch(state)
   state == "off" ? "on" : "off"
 end
 
-def on_lights(number)
-  lights = create_lights(number)
+# def on_lights(number)
+#   lights = create_lights(number)
+# 
+#   (1..number).each do |n|
+#     multiple = n
+#     while multiple <= number
+#       lights[multiple] = flip_switch(lights[multiple])
+#       multiple += n
+#     end
+#   end
+# 
+#   lights.keys.select { |k| lights[k] == "on" }
+# end
 
-  (1..number).each do |n|
-    multiple = n
-    while multiple <= number
-      lights[multiple] = flip_switch(lights[multiple])
-      multiple += n
-    end
+def on_lights(num)
+  on_lights = []
+  (1..num).each do |n|
+    break if n**2 > num
+    on_lights << n**2
   end
 
-  lights.keys.select { |k| lights[k] == "on" }
+  on_lights
 end
 
 p on_lights(5) == [1, 4]
