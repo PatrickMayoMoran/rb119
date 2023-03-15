@@ -41,7 +41,24 @@ def common_chars(array)
   result
 end
 
+def common_chars2(array)
+  common_chars = array[0].chars
+  result = []
+  common_chars.each do |c|
+    result << c if array.all? {|s| s.include?(c)}
+    array.each {|s| s.sub!(c,'')} if array.all? {|s| s.include?(c)}
+    p array
+  end
+
+  result
+end
+
 p common_chars(["bella", "label", "roller"]) == ['e', 'l', 'l']
 p common_chars(['cool', 'lock', 'cook']) == ['c', 'o']
 p common_chars(["hello", 'goodbye', 'booya', 'random']) == ['o']
 p common_chars(['aabbaaaa', 'ccddddd', 'eeffeee', 'ggrrrr', 'yyzzzz']) == []
+
+p common_chars2(["bella", "label", "roller"]) #== ['e', 'l', 'l']
+p common_chars2(['cool', 'lock', 'cook']) #== ['c', 'o']
+p common_chars2(["hello", 'goodbye', 'booya', 'random']) #== ['o']
+p common_chars2(['aabbaaaa', 'ccddddd', 'eeffeee', 'ggrrrr', 'yyzzzz']) #== []
