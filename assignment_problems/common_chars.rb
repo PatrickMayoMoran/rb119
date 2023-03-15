@@ -34,10 +34,8 @@ def common_chars(array)
   end
 
   result = []
-  intersection.each do |letter|
-    count_array = []
-    array.each {|s| count_array << s.count(letter) }
-    count_array.min.times {|_| result << letter}
+  intersection.each do |l|
+    array.map {|s| s.count(l)}.min.times {|_| result << l}
   end
 
   result
