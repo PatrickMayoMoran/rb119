@@ -1,9 +1,9 @@
 cards = [2, 3, 4, 5, 6, 7, 8, 9, 10, :jack, :queen, :king, :ace]
 
-deck = { :hearts   => cards,
-         :diamonds => cards,
-         :clubs    => cards,
-         :spades   => cards }
+deck = { :hearts   => cards.clone,
+         :diamonds => cards.clone,
+         :clubs    => cards.clone,
+         :spades   => cards.clone }
 
 def score(card)
   case card
