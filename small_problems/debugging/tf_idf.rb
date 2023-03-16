@@ -1,17 +1,24 @@
+require 'pry'
 # Term frequency - inverse document frequency:
 # A measure of how important a term is to a document in a collection of documents
 # (the importance increases proportionally to the term frequency in the document,
 # but decreases with the frequency of the word across documents)
 
 def tfidf(term, document, documents)
-  tf(term, document) * idf(term, documents)
+  tf = tf(term, document)
+  idf = idf(term, documents)
+  binding.pry
+  tf * idf
+  
 end
 
 # Term frequency (simple version):
 # the number of times a term occurs in a document
 
 def tf(term, document)
-  document.split(/[\s,.-]/).count { |word| word.downcase == term }
+  count = document.split(/[\s,.-]/).count { |word| word.downcase == term }
+  binding.pry
+  count
 end
 
 # Inverse document frequency:
@@ -22,7 +29,7 @@ end
 def idf(term, documents)
   number_of_documents = documents.length
   number_of_documents_with_term = documents.count { |d| tf(term, d) > 0 }
-
+  binding.pry
   Math.log(number_of_documents / number_of_documents_with_term)
 end
 
@@ -54,17 +61,17 @@ documents = [document1, document2, document3]
 
 # expected outputs:
 puts tfidf("cat", document1, documents) # ~ 1.2
-puts tfidf("cat", document2, documents) # ~ 1.6
-puts tfidf("cat", document3, documents) # 0
-
-puts tfidf("quantum", document1, documents) # ~ 5.5
-puts tfidf("quantum", document2, documents) # 0
-puts tfidf("quantum", document3, documents) # 0
-
-puts tfidf("mastery", document1, documents) # 0
-puts tfidf("mastery", document2, documents) # 0
-puts tfidf("mastery", document3, documents) # ~ 4.4
-
-puts tfidf("some", document1, documents) # 0
-puts tfidf("some", document2, documents) # ~ 0.4
-puts tfidf("some", document3, documents) # ~ 0.4
+# puts tfidf("cat", document2, documents) # ~ 1.6
+# puts tfidf("cat", document3, documents) # 0
+# 
+# puts tfidf("quantum", document1, documents) # ~ 5.5
+# puts tfidf("quantum", document2, documents) # 0
+# puts tfidf("quantum", document3, documents) # 0
+# 
+# puts tfidf("mastery", document1, documents) # 0
+# puts tfidf("mastery", document2, documents) # 0
+# puts tfidf("mastery", document3, documents) # ~ 4.4
+# 
+# puts tfidf("some", document1, documents) # 0
+# puts tfidf("some", document2, documents) # ~ 0.4
+# puts tfidf("some", document3, documents) # ~ 0.4
