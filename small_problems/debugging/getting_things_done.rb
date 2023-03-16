@@ -1,4 +1,5 @@
 def move(n, from_array, to_array)
+  return if n <= 0
   to_array << from_array.shift
   move(n - 1, from_array, to_array)
 end
