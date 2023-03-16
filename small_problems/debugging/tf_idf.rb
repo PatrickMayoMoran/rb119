@@ -7,7 +7,7 @@ require 'pry'
 def tfidf(term, document, documents)
   tf = tf(term, document)
   idf = idf(term, documents)
-  binding.pry
+  
   tf * idf
   
 end
@@ -17,7 +17,7 @@ end
 
 def tf(term, document)
   count = document.split(/[\s,.-]/).count { |word| word.downcase == term }
-  binding.pry
+  
   count
 end
 
@@ -29,8 +29,8 @@ end
 def idf(term, documents)
   number_of_documents = documents.length
   number_of_documents_with_term = documents.count { |d| tf(term, d) > 0 }
-  binding.pry
-  Math.log(number_of_documents / number_of_documents_with_term)
+  
+  Math.log(number_of_documents.fdiv(number_of_documents_with_term))
 end
 
 # Very simple example
@@ -61,17 +61,17 @@ documents = [document1, document2, document3]
 
 # expected outputs:
 puts tfidf("cat", document1, documents) # ~ 1.2
-# puts tfidf("cat", document2, documents) # ~ 1.6
-# puts tfidf("cat", document3, documents) # 0
+puts tfidf("cat", document2, documents) # ~ 1.6
+puts tfidf("cat", document3, documents) # 0
 # 
-# puts tfidf("quantum", document1, documents) # ~ 5.5
-# puts tfidf("quantum", document2, documents) # 0
-# puts tfidf("quantum", document3, documents) # 0
+puts tfidf("quantum", document1, documents) # ~ 5.5
+puts tfidf("quantum", document2, documents) # 0
+puts tfidf("quantum", document3, documents) # 0
 # 
-# puts tfidf("mastery", document1, documents) # 0
-# puts tfidf("mastery", document2, documents) # 0
-# puts tfidf("mastery", document3, documents) # ~ 4.4
+puts tfidf("mastery", document1, documents) # 0
+puts tfidf("mastery", document2, documents) # 0
+puts tfidf("mastery", document3, documents) # ~ 4.4
 # 
-# puts tfidf("some", document1, documents) # 0
-# puts tfidf("some", document2, documents) # ~ 0.4
-# puts tfidf("some", document3, documents) # ~ 0.4
+puts tfidf("some", document1, documents) # 0
+puts tfidf("some", document2, documents) # ~ 0.4
+puts tfidf("some", document3, documents) # ~ 0.4
