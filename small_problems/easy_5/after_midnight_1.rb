@@ -37,9 +37,10 @@ end
 def time_of_day(time)
   hours, minutes = time.divmod(60)
   hours = (hours % 24).abs
-  hours = format_time(hours)
-  minutes = format_time(minutes)
-  hours + ':' + minutes
+  # hours = format_time(hours)
+  # minutes = format_time(minutes)
+  # hours + ':' + minutes
+  sprintf('%02d:%02d', hours, minutes)
 end
 
 p time_of_day(0) == "00:00"
