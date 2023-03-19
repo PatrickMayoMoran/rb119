@@ -28,18 +28,9 @@ ALGORITHM
 
 CODE
 =end
-def format_time(num)
-  time = num.to_s
-  time.prepend('0') if time.size == 1
-  time
-end
-
 def time_of_day(time)
   hours, minutes = time.divmod(60)
   hours = (hours % 24).abs
-  # hours = format_time(hours)
-  # minutes = format_time(minutes)
-  # hours + ':' + minutes
   sprintf('%02d:%02d', hours, minutes)
 end
 
