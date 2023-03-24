@@ -21,10 +21,13 @@ DEGREE = "\xC2\xB0"
 
 def dms(num)
   degrees = num.to_i % 360
+  minutes = ((num % 1 ) * 60).truncate(2).to_i
+  seconds = ((((num % 1 ) * 60)  % 1 ) * 60).to_i
+  sprintf("%d#{DEGREE}%02d'%02d", degrees, minutes, seconds)
 end
 
 p dms(30) #== %(30°00'00")
-# p dms(76.73) == %(76°43'48")
+p dms(76.73) #== %(76°43'48")
 # p dms(254.6) == %(254°36'00")
 p dms(93.034773) #== %(93°02'05")
 p dms(0) #== %(0°00'00")
