@@ -1,6 +1,26 @@
+=begin
+GOAL: return a string degree representation of a float number
+
+INPUT: float
+OUTPUT: string with degree, fraction of 60 minutes, fraction of 60 seconds
+
+RULES
+
+DATA STRUCTURES
+
+ALGORITHM
+  kind of problem?
+
+  helper methods?
+    sprintf 
+
+assign degrees to integer of float, 360 mod
+=end
+
 DEGREE = "\xC2\xB0"
 
 def dms(num)
+  degrees = num.to_i % 360
 end
 
 p dms(30) #== %(30°00'00")
