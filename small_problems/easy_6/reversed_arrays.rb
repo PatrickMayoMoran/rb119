@@ -7,6 +7,18 @@ def reverse!(list)
   list
 end
 
+def reverse!(list)
+  l_i = 0
+  r_i = -1
+
+  while l_i < list.size/2
+    list[l_i], list[r_i] = list[r_i], list[l_i]
+    l_i += 1
+    r_i -= 1
+  end
+  list
+end
+
 list = [1,2,3,4]
 result = reverse!(list)
 p result == [4, 3, 2, 1] # true
