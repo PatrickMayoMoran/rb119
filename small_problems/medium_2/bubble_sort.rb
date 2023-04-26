@@ -39,7 +39,6 @@ end
 
 def bubble_sort!(array)
   swap_happened = true
-
   while swap_happened
     swap_happened = false
 
