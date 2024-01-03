@@ -9,7 +9,7 @@ def ascending?(a)
   end
 end
 
-def spiral(arr)
+def mountain(arr)
   return false if multiple_max?(arr)
 
   first =  arr[..arr.index(arr.max)]
@@ -18,9 +18,20 @@ def spiral(arr)
   [first, second].all? { |a| ascending?(a) }
 end
 
-p spiral([1,2,4,3,2,1]) == true
-p spiral([1,2,4,6,4,2,1]) == true
-p spiral([0,3,5,4,3,2,1]) == true
-p spiral([0,3,5,5,4,3,2,1]) == false
-p spiral([1,2,4,6,4,2,4]) == false
-p spiral([1,5,4,6,4,2,1]) == false
+=begin
+A mountain is an array that:
+- starts with any integer
+- every integer after that is increasing until the peak
+- has a single peak
+- every value after the peak is decreasing
+
+Please write a method, mountain, that returns true or false
+based on whether or not the given array is a mountain.
+=end
+
+p mountain([1,2,4,3,2,1]) == true
+p mountain([1,2,4,6,4,2,1]) == true
+p mountain([0,3,5,4,3,2,1]) == true
+p mountain([0,3,5,5,4,3,2,1]) == false
+p mountain([1,2,4,6,4,2,4]) == false
+p mountain([1,5,4,6,4,2,1]) == false
